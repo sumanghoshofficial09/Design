@@ -130,3 +130,20 @@ public void save(Student student)
 	}
 
 }
+
+
+
+
+now after making loose coupling we change the under database then we dont need to change the student class 
+you only need to change the repository class 
+
+if we looks at the responsibility student class has the reponsibility in dealing in core student functionality
+
+repository class has the single responsibility in handling database operation
+
+Single Responsibility Principle always advocates higher cohesion and loose coupling 
+
+by removing tight coupling and making coupling we are abiding by SRP
+
+Summary : 
+we look at two concept .cohesion and coupling
