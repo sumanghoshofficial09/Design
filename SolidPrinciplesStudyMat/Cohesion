@@ -1,0 +1,113 @@
+a degree to which the various part of software component is related 
+
+
+when see garbage bin /can , there are different type of garbage scattered , we cannot come up with any relation between them 
+
+it has wide variety of item like : plastic cans , beer bottle , paper waste 
+
+but we can segragate it in different garbage bins for different different purpose : 
+
+paper bin 
+
+glass bin 
+
+plastic bin 
+
+metal bin 
+
+now if you can segrgate garbage like this in separate separate bins : now in plastic bin , all the items are made up of plastic 
+
+now we can form up a relation between them 
+if we at the definition of cohesion :
+----------------------------------------
+
+we can say that the content of unsegregated bin has low cohesion 
+
+and content of segregated bin have high cohesion
+
+
+take this example : 
+----------------------
+
+
+public class Sqaure {
+
+	
+	int side = 5;
+	
+	public int calcuteArea()
+	{
+		return side*side;
+	}
+	
+	public int calculatePerimeter()
+	{
+		return side*4;
+	}
+	
+	public void draw()
+	{
+		
+		
+	}
+	
+	public void rotate(int degree)
+	{
+		
+	}
+	
+}
+
+
+in class Square : 
+
+calcuteArea  and calculatePerimeter  both methods are doing some calculation , so they have high level of cohesion among them
+
+now if you look at draw method and rotate method , they both are doing some kind of rendering activity , they also have high level of cohesion between them 
+
+
+but if you take all of the methods as whole , the level of cohesion is low
+
+for instance : lets say the calculatePerimeter method is not closely related to draw method , as they deal with entirely different responsibility
+
+
+lets do some kind of shuffling to increase the cohesion :
+
+we are doing to take out these two method draw and rotate method out of Square class and put it under SquareUI 
+
+
+splitting this class to two classes increases the cohesion
+
+one aspect of SRP is that we should only aim for highest cohesion . if needed to we need to split the class in two or more classes to improve the 
+
+cohesion level 
+
+if there is high cohesion level between all the method in the class , we can assign a single responsibility, 
+
+
+
+new Square class 
+
+public class Sqaure {
+
+	
+	int side = 5;
+	
+	public int calcuteArea()
+	{
+		return side*side;
+	}
+	
+	public int calculatePerimeter()
+	{
+		return side*4;
+	}
+
+	}
+	
+	this is new Square class : cohesion level is high , so safely we can say that, as a single responsibility of Square class is to deal 
+	with measurement related work to the Square 
+	
+	So more higher the cohesion more we are adhering to the single responsibility principle 
+	
+	

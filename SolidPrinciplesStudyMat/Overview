@@ -1,0 +1,26 @@
+this course will give you fundamental concept of solid principle :
+knowing solid principles is must have set for any software developer 
+this will be use to create robust software and elegant software
+
+like if you say about open closed principals : 
+
+closed for modification
+--------------------------------------------
+new features getting added to the software should not have to modify existing code 
+
+
+open for extension : 
+-----------------------------------------------
+
+software component should be extendable to add a new feature or to add a new behavior to it 
+
+it concept will be explained with the help of real world analogy 
+
+
+
+first we analyze real world example  and then we analyze code snippet ; 
+
+
+we will learn how to identify the badly designed code and also how to apply solid principles to fix it or you can redesign the code
+
+we wil code using live ide 

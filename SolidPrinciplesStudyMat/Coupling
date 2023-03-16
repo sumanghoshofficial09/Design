@@ -1,0 +1,132 @@
+Coupling : 
+
+level of inter-dependency in various software component 
+
+in Software tight coupling is undesirable feature
+
+
+code snippet :
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.Date;
+
+public class Student {
+	
+	private String studentId;
+	private Date studentDob;
+	private String address;
+	
+	
+	public String getStudentId() {
+		return studentId;
+	}
+
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
+
+	public Date getStudentDob() {
+		return studentDob;
+	}
+
+
+	public void setStudentDob(Date studentDob) {
+		this.studentDob = studentDob;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+	public void save()
+	{
+		
+		String objectString = Myutil.serializeIntoString(this);
+		Connection connection=null;
+		Statement statement=null;
+		
+		try
+		{
+			
+			Class.forName("com.sql.jdbc.Driver");
+			connection=DriverManager.getConnection("jdbc:mysql://localhost:3386/MyDB","root,", "password");
+			statement = connection.createStatement();
+			statement.execute("insert into student values ("+objectString+")");
+			
+			
+			
+		}
+		catch(Exception e )
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+}
+
+
+
+here in this class some times in future you want to go with nosql database like mongodb
+
+then most of the code of the class needed to change 
+
+you can see The Student class is tighly coupled with database layer we used , the backend
+
+you can give analogy that train is tightky coupled to track 
+
+
+student class will deal idealy with basic student related fucntionality 
+
+like getting student id , address and date of birth etc 
+
+
+Student class should not be cognizant to the low level details of backend database
+
+
+So tighly coupling is bad in software 
+so how do we fix this 
+
+
+we will take the database related code we will move it to new repository class 
+
+public class StudentRepository 
+{
+
+public void save(Student student)
+	{
+		
+		String objectString = Myutil.serializeIntoString(this);
+		Connection connection=null;
+		Statement statement=null;
+		
+		try
+		{
+			
+			Class.forName("com.sql.jdbc.Driver");
+			connection=DriverManager.getConnection("jdbc:mysql://localhost:3386/MyDB","root,", "password");
+			statement = connection.createStatement();
+			statement.execute("insert into student values ("+objectString+")");
+			
+			
+			
+		}
+		catch(Exception e )
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+}

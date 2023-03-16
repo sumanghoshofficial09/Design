@@ -1,0 +1,23 @@
+it states that
+Every software component should have only one responsibility
+
+
+when we say software component , in object oriented programming principle , the first concept come to use is class
+
+software component can be also referred to a method / function or module
+
+rule state that software component should have only one responsibility
+
+example of swiss army knife : 
+
+it is a combination of number of useful tools each one individual responsibility  
+
+each one with distinct purpose
+you think swiss army knife as software component , it violates the single responsibility principle 
+
+why?  because it has multiple responsibilities 
+what is the recommendation no srp ?
+
+normal kitchen knife has a single responsibility
+it can be  only be used for cutting purpose , you cannot use it as can opener nor as screw driver 
+ 
