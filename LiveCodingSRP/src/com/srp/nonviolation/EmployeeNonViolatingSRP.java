@@ -1,5 +1,8 @@
 package com.srp.nonviolation;
 
+import com.srp.dao.EmployeeRepository;
+import com.srp.tax.EmployeeTAxCalculator;
+
 public class EmployeeNonViolatingSRP {
 	
 	private String employeId;
@@ -36,6 +39,19 @@ public class EmployeeNonViolatingSRP {
 	}
 	public void setEmployeeType(String employeeType) {
 		this.employeeType = employeeType;
+	}
+	
+	
+	
+	// this method is good as it has no reason to change
+	public void calculateTax()
+	{
+		new EmployeeTAxCalculator().calculateTax(this);
+	}
+	
+	public void save()
+	{
+		new EmployeeRepository().save(this);
 	}
 	
 	

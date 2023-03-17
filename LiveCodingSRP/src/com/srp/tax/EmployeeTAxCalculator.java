@@ -13,7 +13,7 @@ import com.srp.nonviolation.EmployeeNonViolatingSRP;
 public class EmployeeTAxCalculator {
 
 	
-	private void calculateTax(EmployeeNonViolatingSRP  emp)
+	public void calculateTax(EmployeeNonViolatingSRP  emp)
 	{
 		if(emp.getEmployeeType().equals("fulltime "))
 		{
