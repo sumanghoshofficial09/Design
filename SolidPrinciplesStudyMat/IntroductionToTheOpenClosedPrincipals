@@ -1,0 +1,7 @@
+it is often abbreviate using OCP
+
+Software component should be closed for modification but open for extension
+
+confusion can be there ?
+
+how can something open and close at the same time

@@ -1,0 +1,10 @@
+This is  the S in SOlID 
+
+principle says that every software component  has one and only one responsibility 
+
+
+always aim for high cohesion ans loose coupling to adhere the principle 
+of srp 
+
+
+following SRP can lead to savings in software management cost

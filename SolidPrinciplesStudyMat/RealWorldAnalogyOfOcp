@@ -1,0 +1,40 @@
+lets take the example of WII console
+
+we can some extra feature to the WII console 
+
+we can add the zapper feature or we can add the steering wheel feature to the  
+
+WII console , but we donot have to perform any visible changes to basic WII console 
+
+it was just plug and play , think about a situation
+
+when WII console came out of factory , it came out as closed for modification
+
+Cause WII dont want their customers to go and open the console on their own,
+
+but they still made it possible for their customers to add accessories
+
+so there by add extensions or new feature to the wii console 
+
+this did not happen by accident , this happened becuase engineer in wii wanted theird
+
+product to behave like this 
+
+in summary WII console is designed in such a way such that it is closed for modification a
+and open for extension
+
+But when say a software component is closed for modification and open for 
+
+extension then what do we mean
+
+close for modification :
+----------------------------
+
+means new features getting added to software component  , does not means that we have to 
+modify existing code , of the existing application 
+
+open for extension 
+-------------------
+
+A software component should be open for extension
+
