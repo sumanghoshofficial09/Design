@@ -1,0 +1,53 @@
+Every software component should have only one reason to change 
+
+this is the term uncle robert bob define in book to define SRP 
+
+
+Heraclitus : - the only thing in constant is change 
+
+
+Change is inevitable 
+
+Software is never dormant , it always keep changing 
+
+
+there could be multiple reason for software company to change in future 
+
+lets jotted down some reason to change for Student class 
+that will possibly come in future 
+
+Reason for change : 
+
+-----------------------
+
+Change in the student id format as suggested by school mangement 
+
+
+Change in student name format as suggested by jurisdiction
+
+changes in backend database 
+
+what does Single Responsibility Principle say : 
+
+====================================================
+
+every software component should have only and only one reason to change 
+
+if a class has multiple reason to change then the frequncy of changing will increase 
+
+if change to a software component opens up a possibility in introducing the bugs 
+more changes in software component , more possibility in introducing software bugs
+
+
+this needs more rigorous testing to make sure we are catching all the bugs
+ 
+ 
+ difference between following A SRP and not following SRP , could be considerable financial impact 
+ 
+ it will reduce the software maintanence cost in the long run 
+ 
+ 
+ if the reason to changes are related closely we can combine each other 
+ 
+ 
+
