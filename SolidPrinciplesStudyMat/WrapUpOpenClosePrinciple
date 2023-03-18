@@ -1,0 +1,14 @@
+Open close principle say that Software Component should be closed for modification but open for extensions
+
+Closed for modification : 
+
+New feature added to software component donot have to modify existing code, 
+
+Software component should be extendible to add a new feature or to add a new behavior to it 
+
+following open close principle benefits us in having considerable cose savings 
+
+we also saw that how open closed principle and Single responsibility principle can work together to have a better design 
+
+Also we cautioned , we can create huge number of unnecceary claases , by simply blindly following open close principle 
+with out applying  any thought 
