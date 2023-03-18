@@ -38,3 +38,261 @@ open for extension
 
 A software component should be open for extension
 
+
+public class InsurancePremiumDiscountCalculator
+{
+
+public int premiumDiscountPercent(HealthInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+
+this method takes an arguement HealthInsuranceCustomerProfile  class 
+
+public class HealthInsuranceCustomerProfile 
+{
+
+public boolean isLoyalCustomer()
+{
+
+return true or false;
+}
+
+}
+
+
+this information is used to calculate the premium discount 
+
+lets say the company started businees on providing vehicle insurance also 
+
+now we need to support vehical insurance in ou code 
+
+this discount calculation will be base on same , it will be based on loyalty 
+
+regardless it is health , vehicle or any other type of insurance 
+
+to handle this we add a new class to our design 
+
+public class VehicleInsuranceCustomerProfile {
+
+public void isLoyalCustomer()
+{
+}
+
+}
+
+
+now we want our InsurancePremiumDiscountCalculator to have 
+VehicleInsuranceCustomerProfile class too 
+
+Now how to do that ?
+
+now we nee to have the overloaded method in InsurancePremiumPremiumDiscountCalculator
+
+like this 
+
+
+public class InsurancePremiumDiscountCalculator
+{
+
+public int premiumDiscountPercent(VehicleInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+public int premiumDiscountPercent(HealthInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+
+
+
+
+}
+
+
+lets say we have now different kind of insurance home insurance 
+
+now what to do
+
+
+public class HomeInsuranceCustomerProfile 
+{
+
+public boolean isLoyalCustomer()
+{
+
+  /// write some loyalty code
+  
+
+
+}
+
+
+}
+
+now in the main class 
+
+////////////  main class /////////////////
+
+public class InsurancePremiumDiscountCalculator
+
+{
+
+//overloaded method 1
+
+public int premiumDiscountPercent(VehicleInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+
+
+//overloaded method 2
+public int premiumDiscountPercent(HealthInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+
+
+
+//overloaded method 3
+public int premiumDiscountPercent(HealthInsuranceCustomerProfile customer)
+{
+
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		
+		}
+		
+		return 0;
+
+
+
+}
+
+
+}
+
+
+in order to have new feature we are touching our existing code , which goes agianst 
+
+our open close principle
+
+lets refactor design let see if we can solve this problem 
+
+
+
+we will create a new interface called customerprofile 
+
+------------------------------------
+public interface CustomerProfile 
+{
+
+public boolean isLoyalCustomer();
+
+}
+-------------------------------------
+
+we will make our both customerProfile  classes implements common interface
+
+
+in our calculator in the premiumDiscountPercent method we need to change the argument
+
+like this
+
+
+
+public class PremiumInsuranceDiscountCalculator
+{
+	public int premiumDiscountPercent(CustomerProfile customer)
+	{
+	
+		if(customer.isLoyalCustomer())
+		{
+		
+			return 20;
+		}
+		
+		return 10;
+	
+	
+	}
+
+} 
+
+
+now any number of customerProfile can implement CustomerProfile interface 
+
+any to change CustomerProfile , we dont need to touch PremiumInsuranceDiscountCalculator at 
+all
+
+
+All we did is to add a new class by implementing the existing interface 
+
+
+what we saw now it is the example of openclosed principle 
+
+refactoring we did made it confront to openclose principle 
+
+now the design has become must robust to handle the future extensions
+
+
+
+
+

@@ -1,0 +1,42 @@
+1.Ease of adding new feature 
+
+lets see how ?
+
+let assume that we dont follow open closed princiapls : 
+then what will happen for all additional feature we need to modify existing code 
+
+then what will happen : more number of time we are adding new features , the more 
+number of time, we need to change existing code 
+so what will happen , we need to spend more time on testing and quality assurance 
+to ensure that we dont introduce new bug in the code 
+
+so if we follow open closed principle , is that we dont know need to test at all 
+that is incorrect , we still need to test , but testing a new peice of code is 
+
+much more easy than testing the whole regression cycle 
+
+speak to any qa tester , he will swear by the rule 
+
+open close principle help us adding new feature leads to minimun development and 
+
+testing process
+
+if we follow open closed principle it will quite in turn follows decoupling process 
+
+we ended up with components those are more loosely couples with one and another 
+
+key point to note is SOLID principles are all intertwined and interdependent 
+
+they are most effective when they are combined together 
+
+
+CAUTION : dont know follow the open close principle blindly : 
+
+you will end up a huge number of classed that complicate your design
+
+let say if you think that you need to fix a bug in existing code , you can just go and 
+do it , dont think in this case you need to refactor your design 
+
+it is more like a subjective decision where to use open close principle or not
+
+ 
