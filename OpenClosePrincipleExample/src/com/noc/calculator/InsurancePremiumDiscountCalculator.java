@@ -8,19 +8,14 @@ import com.noc.customer.profiles.VehicleInsuranceCustomerProfile;
 /**
  * 
  * @author ciphe
- * 
- * if you want to change the customer profile in InsurancePremiumDiscountCalculator  then you need to change the 
- * 
- * InsurancePremiumDiscountCalculator class 
- * 
- * this is violating open close principle
- * 
- * every time we need to support a new customer profile, we need to add a new 
- * 
- * over loaded method to the InsurancePremiumDiscountCalculator class 
- * 
- * so actually we are changing the existing code every time 
- * 
+ *
+ *our code is following the Open Close Principle 
+ *
+ *if we want to change  the customer profile in this class 
+ *we donot need to change the InsurancePremiumDiscountCalculator Class 
+ *
+ *to have a new feature or new Customer Profile to get added over here 
+ *
  * 
  *
  */
