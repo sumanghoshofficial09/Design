@@ -1,0 +1,87 @@
+We will discuss L from SOLID 
+
+which is Liskov Substitution Principle 
+
+it is named after Computer Scientist Barbara Liskov
+
+Object should be replaceable with thier sub types without affecting the correctness of the programme
+
+to explain this we will start with inheritance which is the basic feature of any object oriented programming language 
+
+Inheritance is also refer to IS-A relationship 
+
+take the example of the car class
+
+HathchBack extends a Car class we can say hatchback is a car 
+
+Lets take another example we have a bird class and Ostrich class is extending Bird class we can say that the Ostrich is a Bird 
+
+Gasolene class extends Fuel class we can say that Gasolene is a fuel 
+
+there is hidden problem with this approach 
+
+there is one hidden problem in this example : 
+
+is in the midddle exampe : this example Ostrich extends birds has a hidden problem
+
+Ostrich is a bird, bird can fly , but interesting fact is that Ostrich cannot fly 
+
+lets see with code now 
+
+we can see Bird class with fly method ()
+
+//////////////////////////////////////////
+public class Bird 
+{
+
+public void fly()
+{
+
+}
+
+
+}
+//////////////////////////////////////////
+
+We have Ostrich which is extending Bird class 
+
+public class Ostrich extends Bird 
+
+{
+
+@override 
+
+public void fly()
+{
+
+//unimplemented 
+
+throw new RuntimeException();
+}
+
+}
+
+
+
+}
+
+
+
+what Ostrich class does it override the fly method and leaves method unimplemented 
+
+the statement ostrich is a bird might still be correct 
+
+
+now lets see the liskov principle , object should be replaceable with the sub type without changing the correctness of the programme
+then this relation fails the liskov principle 
+
+you cannot replace the bird object in all the places  by using Ostrich object
+
+liskov substitution principle is more strict than just a IS-A test 
+
+liskov substitution principle wants us to move away from IS-A way of thinking 
+
+
+Object should be replaceable with their subtypes wth out changing the correctness of the programme 
+
+

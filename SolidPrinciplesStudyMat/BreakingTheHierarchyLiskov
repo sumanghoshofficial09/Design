@@ -1,0 +1,217 @@
+Here we are going to examine the liskov subs principle 
+we will take two examples and analyse and find design flaws in two of them 
+we will apply the liskov susb principle and improve the design flaws 
+
+lets start with first example 
+
+we have a generic car class and we have a racing car class 
+lets say formulae one racing car 
+now racing car extends car 
+the arrow shows inheritance 
+
+
+lets say car class has a method getCabinWidth()
+in Car class 
+class Car 
+{
+
+public int getCabinWidth()
+{
+}
+
+}
+
+lets say RacingCar Extends Car 
+
+public class RacingCar extends Car
+{
+
+public int getCabinWidth()
+{
+
+	//un implemented
+}
+
+public double getCockpitWidth()
+{
+	return "cockpit width";
+}
+
+}
+
+General car has a cabin but for Racing car does not have any cabin 
+
+the interior space of a racing car is called cockpit
+
+RACing cars do not have the cabin width 
+so the racing car implement  the getCockpitWidth() accordingly 
+
+lets get some object of racing car lets play around it 
+
+
+in order to test this we will test the behavior of car util class 
+
+public class CarUtils {
+
+public static void main(String args[])
+{
+	Car firstCar = new Car();
+	Car secondCar = new Car();
+	Car thirdCar = new RacingCar();
+	
+	List<Car> myCars = new ArrayList<Car>();
+	
+	myCars.add(firstCar);
+	myCars.add(secondCar);
+	myCars.add(thirdCar);
+	
+	for(Car car : myCars)
+	{
+		System.out.println(car.getCabinWidth());  ///  oops mistake here
+		
+		
+	}
+}
+
+
+Allthough the references of all 3 object is Car but first two Objects are Car instances and third one is Racing Car Instances
+
+
+we are here iterating out all 3 car objects and printing out the cabinWidth of each 3 car 
+
+Racing Car overrides the getCabinWidth () and leaves it un implemented
+
+
+in the third iteration , this code will not work correctly because of unimplemented method
+
+this is the design hole that has been exposed 
+
+we have to strike at the root which is inheritance itself 
+in this case we have to break the inheritance 
+
+RacingCar will no longer extend car  we need to create the common parent for both 
+
+we will come up with new class called Vehicle which is very generic class 
+
+this vehicle class can represent any mode of transportation 
+
+Example a truck a boat and aeroplane it can be anything 
+
+We can make both car and racing car extending the vehicle class 
+
+lets define Vehicle class it has a method called interiorWidth() 
+
+class Vehicle 
+{
+
+	public int getInteriorWidth()
+	{
+	  return interiorWidth;
+	
+	}
+
+}
+
+
+this is neither cabin width nor cockpit width , most genric abstraction called interior width 
+
+lets say we have car class which  is extending the vehicle car class can override the getInteriorWidth() 
+
+
+class Car extends Vehicle 
+{
+
+ 	@Override 
+ 	public int getInteriorWidth()
+ 	{
+ 	
+ 		return this.getCabinWidth();
+ 		
+ 	
+ 	}
+ 	
+ 	public getCabinWidth()
+ 	{
+ 		return cabinWidth;
+ 	}
+
+
+}
+
+
+now here the Car class override the  getInteriorWidth() method 
+internally call this .getCabinWidth method 
+
+
+--------
+
+now Lets say RaceCar extends the Vehicle class 
+it will override the getInteriorWidth method and internally in the method it is calling the getCockpitWidth method 
+
+
+class RaceCar extends Vehicle 
+{
+
+	public int getInteriorWidth()
+	{
+	
+		this.getCockpitWidth();
+		
+	}
+	
+	public int getCockpitWidth()
+	{
+		return cockpitWidth;
+	
+	}
+	
+	}
+	
+	the code restructuring needs to follow 
+	
+	
+	lets review the updated CarUtils  class again 
+	
+	
+	we have to rename the class to VehicleUtils 
+	
+	now lets see the updated class 
+	
+	
+	
+	public class VehicleUtils 
+	{
+	
+		public static void main(String args[])
+		{
+			Vehicle firstCar = new Car();
+			Vehicle secondCar = new Car();
+			Vehicle thirdCar = new RacingCar();
+	
+			List<Car> myCars = new ArrayList<Car>();
+	
+			myCars.add(firstCar);
+			myCars.add(secondCar);
+			myCars.add(thirdCar);
+	
+			for(Car car : myCars)
+			{
+				System.out.println(car.getInteriorWidth());  
+		
+		
+			}
+	
+		}
+		
+	}
+	
+	
+	we are here changing the reference type of 3 object as Vehicle 
+	
+	
+	the pattern of solution what we applied to this problem is called 
+	
+	Pattern 1 : 
+	
+	Break the hierarchy it it fails the substitution test 	
+	
