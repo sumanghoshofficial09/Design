@@ -1,0 +1,10 @@
+Wrap up : 
+
+Object should be replaceable with their subtype without  affecting the correctness of the program
+
+
+We need to move way from IS-away of thinking 
+
+we saw two solution pattern to follow 
+1. Break the hierarcy pattern
+2. Tell dont ask , solution pattern
