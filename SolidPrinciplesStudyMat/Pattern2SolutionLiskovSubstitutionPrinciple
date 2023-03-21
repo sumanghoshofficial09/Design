@@ -1,0 +1,180 @@
+Here we are going to look at the second example , where we can apply liskov substitution principle 
+
+lets say we have a generic product class 
+we have also InHouseProductClass that extends the GenericProduct Class  , 
+
+Just think of it from a perspective of an ecommerce website like Amazon
+
+Amazon sells number of product online , they are selling product from 3rd  party seller 
+
+But Amazon has its own set of product too , which they are manufacturing inhouse , I think they called the product under a brand called amazonBasic
+
+Assume the product get base discount of 20 percent , but if the product is inhouse product it  got discount 1.5 times of base discount , which in turn 
+
+30 percent of discount 
+
+
+this is the hierarchy we need to implement 
+
+we can start with the initials 
+
+public class Product 
+{
+	protected double discount;
+	
+	public double getDiscount()
+	{
+	
+		return discount;
+	}
+	
+	public class inHouseProduct extends Product 
+	{
+	
+		public void applyExtraDiscount()
+		{
+		
+			discount = discount*1.5;
+		
+		}
+	
+	}
+
+}
+
+
+we have a Product class which is having a discount  variable and also a getDiscount method which is returning the discount percentage 
+
+and we have inHouseProduct class  , this class has applyExtraDiscount method , it simply takes the discount and multiply it by 1.5 
+
+note InHouseProduct class does not override the getDiscount method , it simply inherits the getDiscount method from the Product class 
+
+
+we are going to use these priduct classes and inHouseProduct classes in other class ProductUtils 
+
+
+public class ProductUtils 
+{
+
+	public static void main(String args[])
+	{
+		Product p1 = new Product();
+		Product p2 = new Product();
+		Product p2 = new InHouseProduct();
+		List<Prodcuct> productList = new ArrayList<Integer>();
+		
+		productList.add(p1);
+		productList.add(p2);
+		productList.add(p3);
+		
+		for(Product product : productList)
+		{
+			if(product instanceOf InHouseProduct)
+			{
+				product.applyExtraDiscount();
+			}
+			
+			System.out.println(product.getDiscount());
+		
+		}
+		
+		
+	}
+	
+	
+	what we are seeing in this Util class is not a good design 
+	this is against the liskov subs principle 
+	
+	we should able to deal with all the object as product object itself 
+	
+	
+	how can we restructure the code to achieve this 
+	
+	so in this case we will take the help of @override property of the inheritance 
+	
+	
+	
+	public class Product 
+	{
+	
+		protected doubled discount=20;
+		public doubt getDiscount()
+		{
+			return discount;
+		}
+		
+	}
+	
+	
+	
+	now InHouseProduct class will extend the Product class and override the getDiscount method 
+	
+	
+	
+	public class InHouseProductClass extends Product 
+	
+	{
+	
+		@override 
+		public double getDiscount()
+		{
+			this.applyExtraDiscount();
+			
+			return discount;
+		
+		}
+		
+		
+		public void applyExtraDiscount()
+		{
+			return discount * 1,5;
+		}
+	
+	
+	
+	}
+	
+	
+	now we have to the corresponding change in PricingUtil
+	
+	
+	public class PricingUtil
+	{
+		public static void main(String args[])
+		{
+		
+			Product p1 = new Product();
+			Product p2 = new Product();
+			Product p3 = new InHouseProduct();
+			
+			List<Product> productList = new ArrayList<Product>();
+			
+			productList.add(p1);
+			productList.add(p2);
+			productList.add(p3);
+			
+			
+			for(Product product : productList)
+			{
+				System.out.println(product.getDiscount());
+			
+			}
+			
+			
+			
+			}
+			
+	}
+	
+	so you can see that all the code is same only difference is that , we dont have the instanceOf operation check any more 
+	
+	we dont need to bother that the object is insance of generic  product or the instance of inHouseProduct 
+	
+	By doing this Liskov subs  test is passed now 
+	
+	
+	this is the second pattern : Tell dont ask
+	
+	we have restructured the to follow tell dont ask rule 
+	
+	
