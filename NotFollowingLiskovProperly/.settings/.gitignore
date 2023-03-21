@@ -1,0 +1,14 @@
+# Ignore all files with the .class extension
+*.class
+
+# Ignore files in the logs directory
+/logs/
+
+# Ignore the target directory and its contents
+/target/
+
+# Ignore the .DS_Store file on macOS
+.DS_Store
+
+# Ignore the .idea directory created by IntelliJ IDEA
+.idea/
