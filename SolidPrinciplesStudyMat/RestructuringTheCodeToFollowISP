@@ -1,0 +1,64 @@
+in this session we are looking for problem that has arrived  and how to follow ISP
+
+in this case we have one generic interface and 3 classes are implementing it 
+
+not all methods are making sense to all classes , some method has made a blank implementation 
+
+Easiest way to fix this to split the big interfaces to smaller interfaces 
+
+lets split the big interface IMultiFucntion to three smaller interfaces 
+
+IPrint interface , IFax interface and IScan interface 
+----------------------------------
+IPrint will contain print() and getPrintSpoolDetails()
+-----------------------------------
+Interface IScan will contains two methods :
+
+scan() and scanPhoto() method 
+-----------------------------------
+
+public interface IFax contains fax() and internetFax() method 
+
+-------------------------------------
+
+
+lets changes the classes accordingly : 
+------------------------------------
+
+XeroxWorkCentre implements all the 3 interfaces 
+IPrint , IFax and IScan interfaces 
+--------------------------------------------
+
+HPPrinterScanner class implements IPrint and IScan interface 
+---------------------------------
+
+
+in object oriented Programming paradigm, ----- 
+------------------------------------------
+
+A class is allowed to implememt multiple interfaces 
+
+now we can delete the blank implementation which is not needed from other classes 
+
+CannonPrinter device will Implement only the IPrint interface alone as it can do only the printing job 
+
+you can see the classes has become much cleaner now, no more blank implementation of methods
+
+if we decide to package this classes as an library and decide to send this to the programmers
+
+then there will be no ambiguity , a programmer can only call the define methods in the class 
+
+so we have solved the problem by segragating the interfaes 
+
+this is one way for following the Interfaces Segregation Principles 
+
+if we think there should be a common method between Printer , Scanner and Fax machine , you can have a separate interface having the 
+common method 
+-----------------------------------
+
+
+
+
+
+
+
