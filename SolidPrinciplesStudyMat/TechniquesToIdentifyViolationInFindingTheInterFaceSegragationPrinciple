@@ -1,0 +1,54 @@
+Standard technique to identify violation of ISP 
+------------------------------------------------
+
+Fat Interfaces 
+--------------------
+it means interfaces with high number of methods 
+
+if we recall our IMultiFunction interface, 
+it has 6 methods , we have to deal with MultiFarious function like printing , scanning and fax 
+
+this is almost always indicate of violation of Interface Segregation Principle 
+
+Interface with Low Cohesion 
+----------------------------------
+
+lets talk in the context of IMultiFunction interface 
+
+we have a method of fax and photo scan  , now fax and scanPhoto are completey two different methods 
+
+in other words there is low cohesion between the methods of IMultiFunction interface 
+
+this is another indication that we are breaking the interface segregation principle 
+
+
+Empty implementation of methods
+-------------------------------------
+
+we saw in our introductory session , some classes has to leave the some of the implemented method blank
+
+blank implementation of interface is almost always the violation of Interface Segregation Principles 
+
+these are the some of the ways , that you can identify the violation of interface segregation principles 
+--------------------------------------------------
+
+after we split the fat interface , now we can clearly say that the one interface has one responsibility or single responsibility 
+
+
+the IPrint interface only has single responsibility of performing printing task 
+
+it holds print related method definitions 
+
+similarly IScan interface has the responsibility of holding the scan related methods and responsibility 
+
+
+so we are inadvertently following the Single Responsibility principle 
+
+
+we are also indirectly following the liskov subs principle as well
+
+most of the solid principles are intricately linked to one and another 
+
+SOlid principles  compliment each other and work together in unison to acheive the well designed software 
+
+
