@@ -1,0 +1,289 @@
+in this session we are going to look ar I of SOLID , which is 4th principle 
+
+Interface Segregation principle 
+
+this is often abbreviated as ISP 
+
+lets looks as what principle says to 
+
+No client should be force to depend on methods it does not use 
+
+to explain as always we should start with real world analogy 
+
+assume you are working in a office which has around 200 employees 
+
+you have bunch of scanner , printer , scanners available for employees
+
+as a developer you have asked to represent this devices as object in code
+
+you need to design an interface to have some kind of uniformity among these devices 
+
+lets say you are walking around the office and you find this devices , multipurpose printer machine 
+
+this device has printer , scanner , copier and fax machines
+all of this features are build into one machine 
+
+you think that this could a good starting point , if we can design a common interface based on this all-in-one device 
+
+
+Xerox work centre 
+-----------------
+
+
+first you design an interface IMultiCentre
+
+public interface IMultiFunction 
+{
+	public void print();
+	public void getPrintSpoolDetails();
+	public void scan();
+	public void scanPhoto();
+	public void fax();
+	public void internetFax();
+	
+	
+
+
+}'
+
+
+this interface defines method that represents various function
+	
+	we have the print() and getPrintSpoolDetails() method which are associated with printing 
+	
+	we have scan() and scanPhoto() method which is associated with scanning 
+	
+	fax() and internetFax() deals with fax related operations
+	
+	
+	
+	---------------------------------------------
+	
+	now we are going to implement a concrete class : XeroxWorkCentre
+	we are going to make it implement the IMultiFunction interface 
+	
+	we are going to implement the all the 6 functions
+	
+	
+	so you implement all the 6 methods 
+	
+	public class XeroxCentre implements IMultiFunction
+	{
+	
+	@Override
+	public void print()
+	{
+		// printing code ;
+	}
+	
+	@Override
+	public void getPrintSpoolDetails()
+	{
+	
+		//  getPrintSpoolDetails code;
+	}
+	
+	@override
+	public void scan()
+	{
+	
+		//  scan code;
+	}
+	
+	@override
+	public void scanPhoto()
+	{
+		// scan photo code
+	}
+	
+	@override
+	public void fax()
+	{
+		// fax code;
+	
+	
+	}
+	
+	@override
+	public void internetFax()
+	{
+	
+		// internet fax code
+		
+		
+	}
+	
+	
+	}
+	
+	/////////////////////////////////////////////////
+	
+	lets say we have another device  HP printer scanner 
+	
+	it is not as multifaceted as XeroxWorkMachines
+	
+	but it can do couple of functions like printing and scanning
+	
+	lets come with a concrete class to represent this HP device 
+	
+	our common interface IMultiFunction has related all printing and scanning methods
+	
+	
+	public class HPPrinterNScanner implements IMultiFunction interface 
+	
+	
+	public class HPPrinterNScanner implements IMultiFunction 
+	{
+		@Override
+		public void print()
+		{
+		
+			// assume real printing code 
+		
+		
+		}
+		
+		@Override 
+		public void getPrintSpoolDetails()
+		{
+			// print spool details 
+		}
+		
+		Override
+		public void scan()
+		{
+		
+			// scanning code
+		}
+		
+		@Override 
+		public void scanPhoto()
+		{
+			// scan photo code 
+		}
+		
+		@Override 
+		public void fax()
+		{
+		
+		}
+		
+		@Override void internetFax()
+		{
+		
+		}
+		
+		
+	
+	}
+	
+	in this class we have implemented the IMultiFunction interface 
+	when you are implementing an interface, you have to implement all the abstract method
+	now question what will we for fax and internetFax method 
+	
+	we will implement those method : means fax method and internetFax method and we will provide a blank code implementation 
+	
+	because this machine does not have ability to send or receive fax 
+	
+	that is why we have to leave these fax related method unimplemented 
+	
+	----------------------
+	
+	now keep walking in your office and reach another room to find a cannon device 
+	
+	this device is a printer and has printing function alone 
+	
+	we will create a class CannonPrinter implements IMultiFunction 
+	
+	public class CannonPrinter implements IMultiFunction 
+	{
+	
+	
+		@Override
+		public void print()
+		{
+		
+			// assume real printing code 
+		
+		
+		}
+		
+		@Override 
+		public void getPrintSpoolDetails()
+		{
+			// print spool details 
+		}
+		
+		Override
+		public void scan()
+		{
+		
+			// empty code
+		}
+		
+		@Override 
+		public void scanPhoto()
+		{
+			// empty code 
+		}
+		
+		@Override 
+		public void fax()
+		{
+			// empty code
+		}
+		
+		@Override void internetFax()
+		{
+			// empty code
+		
+		}
+	
+	
+	}
+	
+	
+	here we can only provide code to the printing related methods and the rest of the method , we need to put the blank and empty code 
+	
+	
+	-------------------------------------------------------------
+	
+	
+	now you are seeing a problem , unimplemented method is always an indicator of poor design 
+	
+	
+	this goes against the Interface Segregration Principle , which says The client should not be forced to depend on the method 
+	that it is not using at all
+	
+	
+	so what is the problem , if we dont fix this , what is the big deal if we just leave those method blank, just like that 
+	
+	
+	Assume that you have an employee portal, that needs to directly access this devices 
+	
+	you have to provide these device classes package as library , to the group of programmers who are working on this employee 
+	
+	portal 
+	
+	
+	lets say one programmer want to send the fax 
+	
+	
+	he sees the fax method on its cannon device class and invokes it 
+	
+	he does not care to look inside the method , as thats why He does not know that it is a blank method 
+	
+	infact He does not need to know the implementation details of fax method 
+	
+	this is a trouble but it is going to break because the implementation is null
+	
+	Interface segragation principle says to avoid such design 
+	
+	
+	
+	
+	
+	
+	
+	
+	
