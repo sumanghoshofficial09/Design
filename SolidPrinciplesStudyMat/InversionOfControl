@@ -1,0 +1,54 @@
+we will look at the new concept called Inversion Of Control
+
+this is often abbreviated as IOC 
+
+this is not part of Dependency Inversion Principle 
+
+but it is closely related  
+
+in previous session the ProductCatalog has constructor which is taking the ProductRepository object 
+
+the class which will call the ProductCatalog will inject the ProductRepository object to the ProductCatalog
+
+Even the injection happen outside of ProductCatalog , but Injection is happening  from the Main Programme control flow 
+
+that means injection is happening in the main thread of the programme 
+
+what if we want that the injection to be happended in the separate thread or separate context all together 
+
+so that main control flow or the main thread can be kept completely isolated from the injection activity 
+
+this can be achieve using frameworks 
+
+if Your programming language is java then Spring framework is a popular choice  
+
+
+Spring IOC container 
+
+SPring will run in it own context 
+
+Spring will take in injecting the required Dependencies of the class
+
+
+
+we can ask Spring framework to provide us the required object , instead of doing it by ourselves 
+
+
+SPring framework first look for all the dependencies required for Object Instantiation 
+
+go ahead and inject each dependencies and instantiate the object 
+
+
+and give back to the main control flow 
+
+
+the control of dependencies injection is completely delegated to Spring framework 
+
+this concept is called Inversion of control 
+
+
+spring is called Inversion of control container 
+ 
+ simply IOC container 
+ 
+
