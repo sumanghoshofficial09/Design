@@ -1,0 +1,202 @@
+we are going to learn about the fifth and final principle from solid 
+it is often abbreviated as DIP 
+what this principle says :
+
+High level modules should not depend on low level modules , both depends on abstraction 
+
+there is another part of definition to it 
+
+Abstraction should not depend on details , details should depend on abstraction 
+
+this is the two part of the priciple but fundamental concept is same 
+
+one follows another 
+
+First we need to understand that what is High Level Module and What is low level module 
+
+Say you are running an Ecommerce Website 
+The Software of Ecommerce website is sophistacated 
+and contains ten of thoudsands lines of code 
+
+But we want to come up with a very high level design model 
+
+this is what it look like : 
+
+ProductCatalog , 
+
+CustomerProfile 
+
+PaymentProcessor 
+ 
+ these are major business function :
+ 
+ this intern depends on other modules : 
+ 
+ ProductCatalog depends on SqlProductRepository 
+ 
+ PaymentProcessor depends on GooglePayGateway and WireTransFer 
+ 
+ CustomerProfileModule based on CommunicationModule which is internally depends on EmailSender and VoiceDialer 
+ 
+ 
+ Modules on top are closer to the business function are called high level modules 
+ 
+ and Modules towards the bottom deals with implementation details and are called low level modules 
+ 
+ what about the Communication Module , is it a high level module or low level module 
+ 
+ 
+ Tick question huh ? Answer is it is both 
+ 
+ 
+ if you think the CustomerProfile and the CommunicationModule alone then the CustomeerProfile is the High level module and 
+ 
+ the Communication Module is the low level module 
+ 
+ 
+ if you consider the Communication and The EmailSender Module alone then the Communication is the high level module 
+ 
+ and the EmailSender is the low level module 
+ 
+ 
+ the module is high level or level , it is relative and not an absolute thing 
+ 
+ 
+ lets see the definition again , it says High level module should not depend on the low level module 
+ 
+ here ProductCatalog depends on SqlProductRepository 
+ 
+ means High level module depends on Low level module
+ 
+ so this directly conflicts the definition of Dependency Inversion Principle 
+ 
+ definition says high level module should not depend on low level module and both should depends on abstraction 
+ 
+ lets see this particular Relationship alone and analyse it further
+ 
+ 
+ lets try to come up with some code snippet for this relations 
+ 
+ so here we have SqlProductRepository class which contians getAllProduct method 
+ 
+ example  :
+ 
+ 
+ Class SqlProductRepositor {
+ 
+ 
+ 		public List<String> getAllProductNames()
+ 		{
+ 		
+ 					return Arrays.asList("soap","toothpaste");
+ 					
+ 					
+ 		}
+ }
+ 
+ assume this method contains a code to the sql statement to the backend database 
+ 
+ this method return the list of productname string 
+ 
+ then we have ProductCatalog class 
+ 
+ class ProductCatalog {
+ 
+ 
+ 	public void listAllProducts()
+ 	{
+ 		SqlRepositorty repository = new SqlRepository();
+ 		
+ 		List<String> allProductNames = repositoty.getAllProductNames();
+ 	
+ 	
+ 	}
+ 
+ 
+ so the ProductCatalog directly depends on SqlProductRepository which violates the Dependency Inversion Principle 
+ 
+ 
+ let see if we can fix this violation 
+ 
+ lets go back to the definition of the guidance that both high level and low level module should depend  on abstraction
+ 
+ the definition gives us some guidance how to fix this violation as well 
+ 
+ what will we do here ?
+ 
+ create an Interface : 
+ 
+ ProductRepository
+ 
+ interface ProductRepository 
+ {
+ 
+ 	public List<String> getAllProductNames();
+ 	
+ }
+ 
+ we will make the SqlProductRepository to implement this newly constructed interface ProductRepository 
+ 
+ 
+ now we need to get SqlProductRepository object to the ProductCatalog class some how 
+ 
+ we should not directly instantiate the SqlProductFactory Object 
+ 
+ we will use the Factory Class for the same 
+ 
+ 
+ public class ProductFactory 
+ 
+ {
+ 
+ 		public ProductRepository create()
+ 		{
+ 			return new SqlProductRepository();
+ 		}
+ }
+ 
+ 
+ 
+ ProductFactory class has a new method called create() , which instantiate new instance of SqlProductRepository and return the 
+ 
+ instance 
+ 
+ From the ProductCatalog class we will invoke this factory method 
+ which will instantiate and return the SqlProductRepository  object 
+ 
+ note our reference object is ProductRepository 
+ so we dont have any tight coupling with SqlProductRepository anywhere in the ProductCatalog class 
+ 
+ 
+ lets go back to our definition now 
+ Both should depends on abstraction : 
+ 
+ 
+ lets see how the dependency looks like now after restructuring of the code :
+ 
+ 
+ High level module ProuctCatalog depends on Product which is the anstraction 
+ 
+ SqlProductrepository which is a low level module depends on ProductRepository ( abstraction ) because it implements it 
+ 
+ 
+ the high level module does not depend on low level module any more 
+ 
+ 
+ lets bring the second part of the definition 
+ 
+ Abstraction should not depend on details , details should depend on abstraction
+ 
+ if you see our Concrete class SqlProductRepository is now implementing ProductRepository 
+ 
+ so details is depending on abstraction 
+ 
+ this is the inversion of Dependency , that is why this principle is called Dependency Inversion Principle 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

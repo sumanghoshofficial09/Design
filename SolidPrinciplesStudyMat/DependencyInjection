@@ -1,0 +1,78 @@
+We are going to learn about the Dependency Injection 
+
+Dependency injection and Dependency Invertion Principle are the same thing though they are related to each other but 
+both are different concept 
+
+in order to understand the Dependency Injection , lets start where we left in the previous sessions
+
+Earlier we have use a Factory Method in order to get the Instance of SqlProductRepository 
+
+Even though it delegates the responsibility of instantiation to a different factory class 
+
+still the owner in triggering this instantiation process is the ProductCatalog class 
+
+Ideally we dont want the ProductCatalog class to worry about when and how need to trigger the instantiation 
+
+what if we can provide instantiated repository to the ProductCatalog class even with out asking the ProductCatalog clas 
+
+lets see how does it look like in code 
+
+
+lets change ProductCatalog class 
+
+we can have parameterize Constructor in ProductCatalog class 
+
+public class ProductCatalog 
+{
+	private ProductRepository productRepository;
+	
+	public ProductCatalog(ProductRepository productRepository)
+	{
+		this.productRepository=productRepository;
+	}
+	
+	public void listAllProducts()
+	{
+	
+		List<String> allProductNames = productRepository.getAllProductNames();
+		
+		// display all product names 
+		
+	}
+	
+	
+	
+}
+
+
+
+we are writing down one main class 
+
+public class EcommerceMainApplication 
+{
+
+		public static void main(String args[])
+		{
+			ProductRepository productRepository = ProductFactory.create()
+			
+			ProductCatalog productCatalog  = new ProductCatalog(productRepository);
+			
+			productCatalog.listAllProducts();
+			
+		}
+		
+}
+
+see this ProductCatalog will get the ProductRepository object whenever it got instantiated 
+
+ProductCatalog does not need to worry about any instantiation 
+
+in other word , 
+
+Dependency injection not only solve the problem of tight coupling 
+
+it completely dissociates the class from going out and getting the dependencies 
+
+there is one more concept called , Inversion of Control but we can discuss that later 
+
+
