@@ -1,0 +1,13 @@
+No client should be forced to depend on method 
+that it would not use 
+
+we look real world analogy of office printers to understand the principle 
+
+we can get the violation of ISP , by looking at the fat interfaces 
+low cohesion between interface methods 
+
+and method with blank implementation in child class
+
+we also coded out the printer example in the java ide 
+
+so we have coverede 4 out of 5 solid principles 
