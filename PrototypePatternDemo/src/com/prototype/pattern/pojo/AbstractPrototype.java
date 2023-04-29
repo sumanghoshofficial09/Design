@@ -7,6 +7,8 @@ public abstract class AbstractPrototype implements Cloneable {
 	
 	
 	
+	
+	
 	public int getAbstractPrototypeVariable() {
 		return abstractPrototypeVariable;
 	}
