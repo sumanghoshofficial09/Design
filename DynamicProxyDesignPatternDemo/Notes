@@ -1,0 +1,10 @@
+Remote Proxy 
+
+
+we have Subject which is an Interface 
+
+method "  operation() : void 
+
+we have RealSubject and We have Proxy 
+
+

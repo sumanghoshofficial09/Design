@@ -22,7 +22,7 @@ public class Client {
 			System.out.println("objects are not equal");
 		}
 		
-		System.out.println(instance1.INSTANCE.;
+		/* System.out.println(instance1.INSTANCE.; */
 		
 	}
 
