@@ -1,4 +1,4 @@
-package com.chainofresponsibility.pojo;
+ package com.chainofresponsibility.pojo;
 
 public abstract class Employee implements LeaveApprover {
 	
