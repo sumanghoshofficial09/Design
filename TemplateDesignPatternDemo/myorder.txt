@@ -1,0 +1,4 @@
+Order Details
+Order No ## 1034
+Order Items  : <{Coke=20.0, Fanta=30.0, Soda=10.0}	 >
+Order Ends...
