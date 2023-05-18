@@ -2,10 +2,10 @@ package com.visitordesignpattern.client;
 
 import com.visitordesignpattern.pojo.Employee;
 import com.visitordesignpattern.pojo.Manager;
-import com.visitordesignpattern.pojo.PrintVisitor;
 import com.visitordesignpattern.pojo.Programmer;
 import com.visitordesignpattern.pojo.ProjectLead;
 import com.visitordesignpattern.pojo.VicePresident;
+import com.visitordesignpattern.visitor.PrintVisitor;
 import com.visitordesignpattern.visitor.Visitor;
 
 public class MainClient {

@@ -1,6 +1,10 @@
-package com.visitordesignpattern.pojo;
+package com.visitordesignpattern.visitor;
 
-import com.visitordesignpattern.visitor.Visitor;
+import com.visitordesignpattern.pojo.Employee;
+import com.visitordesignpattern.pojo.Manager;
+import com.visitordesignpattern.pojo.Programmer;
+import com.visitordesignpattern.pojo.ProjectLead;
+import com.visitordesignpattern.pojo.VicePresident;
 
 public class PrintVisitor implements Visitor {
 	
